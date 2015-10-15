@@ -1,0 +1,65 @@
+#background{
+	background-image: url("background.jpg");
+	background-attachment: fixed;
+	background-size: cover;
+	margin: 0 auto 0 auto;
+	padding:0px !important;
+
+}
+
+#navigator{
+	background-color: white;
+	height: 30px;
+	width: 100%;
+	position:fixed;
+	margin-bottom: 100px;
+	padding-left: 100px;
+	padding-right: 100px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	z-index: 999999;
+}
+
+#menu{
+	width: 60%;
+	float: left;
+}
+
+#navigator div ul{
+	list-style-type: none;
+	padding:0px;
+	margin: none;
+}
+
+#navigator div ul li{
+	display: inline;
+
+}
+
+#searchbar{
+	width: 40%;
+	float: left;
+}
+
+#search{
+	float: right;
+	width: 147px;
+	height: 28px;
+	border-radius: 2px;
+}
+
+
+
+#blankspace{
+	height: 150px;
+	width: 100%;
+
+}
+
+#home{
+	position: relative;
+	height:400px;
+	margin: 0px 200px 100px 200px;
+	width: auto;
+	background-color: #FAFAFA;
+}
