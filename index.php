@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 <?php
 session_start();
 ?>
 
+=======
+>>>>>>> origin/master
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -207,4 +210,8 @@ session_start();
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="assets/js/bootstrap.js"></script>
   </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> origin/master
