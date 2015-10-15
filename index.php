@@ -1,3 +1,25 @@
+<html>
+<head>
+<title>Backpacker</title>
+</head>
+<body>
+<h1>Project Backpacker</h1>
+<h2>Team SEGV</h2>
+<p>This website is for the demo use.</p>
+<p>Contribute: ShengzeWang, Zhengbang Chen, Bangqi Wang, Yifei Li</p>
+
+<form action="test.php" method="post">
+	<table border="0">
+	<tr>
+	<td>null</td>
+	<td><input type="text" name="username" maxlength="12" size="12"></td>
+	</tr>
+	<tr>
+	<td colspan="2"><input type="submit" value="Register"></td>
+	</tr>
+	</table>
+</form>
+
 <?php
 $servername = "engr-cpanel-mysql.engr.illinois.edu";
 $username= "backpack_zbc";
@@ -5,7 +27,7 @@ $password="123456";
 $dbname="backpack_user";
 
 //Create connection
-$conn = New mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 //Check connection
 if(mysqli_connect_error()){
@@ -14,12 +36,12 @@ if(mysqli_connect_error()){
 echo "Connected sucessfully<br><br>";
 
 //Select some data from the database
-$sql = "SELECT * FROM USER";
+$sql = "SELECT * FROM user";
 $result = mysqli_query ($conn, $sql);
 
 if(mysqli_num_rows($result) > 0){
 	while($row = mysqli_fetch_assoc($result)){
-		echo" username:" . $row["user_name"];
+		echo" username:" . $row["username"];
 	}
 }
 else 
@@ -30,3 +52,6 @@ else
 mysqli_close($conn);
 
 ?>
+
+</body>
+</html>
