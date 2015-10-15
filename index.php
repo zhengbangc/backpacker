@@ -39,7 +39,7 @@
 				<div class="row">
 					<div class="dropdown">
 						<ul id="nav" class="nav">
-							<li class="menu-item"><a class="smoothScroll" href="#about" title="About"><i class="icon-user"></i></a></li>
+							<li class="menu-item"><a class="smoothScroll" href="login.php" title="About"><i class="icon-user"></i></a></li>
 							<li class="menu-item"><a class="smoothScroll" href="#resume" title="Resume"><i class="icon-file"></i></a></li>
 							<li class="menu-item"><a class="smoothScroll" href="#work" title="Works"><i class="icon-briefcase"></i></a></li>
 							<li class="menu-item"><a class="smoothScroll" href="#contact" title="Contact"><i class="icon-envelope"></i></a></li>
@@ -66,6 +66,21 @@
 		</div><!--/.container -->
 	</div><!--/.#headerwrap -->
 	
+			<?php
+			$servername = "engr-cpanel-mysql.engr.illinois.edu";
+			$username= "backpack_zbc";
+			$password="123456";
+			$dbname="backpack_user";
+
+			//Create connection
+			$conn = new mysqli($servername, $username, $password, $dbname);
+
+			//Check connection
+			// if(mysqli_connect_error()){
+			// 	die("Database connection failed: " .mysqli_connect_error());
+			// }
+			// echo "Connected sucessfully<br><br>";
+			?>
 
 	<section id="about" name="about"></section>
 	<div id="intro">
@@ -73,29 +88,75 @@
 			<div class="row">
 				
 				<div class="col-lg-2 col-lg-offset-1">
-					<h5>ABOUT</h5>
+					<h5><?php
+								// echo "What the fuck doesn't this work?"
+							$sql = "SELECT * FROM post WHERE writer_username = 'Zhengbang'";
+							$result = mysqli_query($conn, $sql);
+							$row = mysqli_fetch_assoc($result);
+							echo $row["writer_username"];
+					?></h5>
 				</div>
 				<div class="col-lg-6">
-					<p>I'm web designer & front-end developer with 7 years of professional experience. I'm interested in all kinds of visual communication, but my major focus is on designing web, mobile & tablet interfaces. I also have skills in other fields like branding, icon design or web development.</p>
+					<p><?php
+								// echo "What the fuck doesn't this work?"
+							// $sql = "SELECT * FROM post";
+							// $result = mysqli_query($conn, $sql);
+							// $row = mysqli_fetch_assoc($result);
+							echo $row["content"];
+					?></p>
 					<br>
-					<?php
-								echo "What the fuck doesn't this work?"
-							?>
+				
 
 				</div>
 				<div class="col-lg-3">
-					<p><a href="#"><i class="icon-file"></i></a> <sm>DOWNLOAD PDF</sm></p>
+					<p><?php
+								// echo "What the fuck doesn't this work?"
+							// $sql = "SELECT * FROM post";
+							// $result = mysqli_query($conn, $sql);
+							// $row = mysqli_fetch_assoc($result);
+							echo $row["location"];
+					?></p>
 				</div>
 				
 			</div><!--/.row -->
 		</div><!--/.container -->
 	</div><!--/ #intro -->
-		
 
+	<section id="about" name="about"></section>
+	<div id="intro">
+		<div class="container">
+			<div class="row">
+				
+				<div class="col-lg-2 col-lg-offset-1">
+					<h5><?php
+								// echo "What the fuck doesn't this work?"
+							$sql = "SELECT * FROM post WHERE writer_username='Bangqi'";
+							$result = mysqli_query($conn, $sql);
+							$row = mysqli_fetch_assoc($result);
+							echo $row["writer_username"];
+					?></h5>
+				</div>
+				<div class="col-lg-6">
+					<p><?php
+								// echo "What the fuck doesn't this work?"
+							echo $row["content"];
+					?></p>
+					<br>
+				
 
+				</div>
+				<div class="col-lg-3">
+					<p><?php
+								// echo "What the fuck doesn't this work?"
+							echo $row["location"];
+					?></p>
+				</div>
+				
+			</div><!--/.row -->
+		</div><!--/.container -->
+	</div><!--/ #intro -->
 
-	<section id="resume" name="resume"></section>
-	<!--EDUCATION DESCRIPTION -->
+	<!-- <section id="resume" name="resume"></section>
 	<div class="container desc">
 		<div class="row">
 
@@ -124,17 +185,17 @@
 					<p><sm>JUNE 2012</sm></p>
 				</div>
 	
-		</div><!--/.row -->
+		</div>
 		<br>
 		<hr>
-	</div><!--/.container -->
+	</div> -->
 	
-	<div id="c">
-		<div class="container">
-			<p>Created by <a href="http://www.blacktie.co">BLACKTIE.CO</a></p>
-		
-		</div>
-	</div>
+	<!-- Footer -->
+					<footer id="footer">
+						<ul class="copyright">
+							<li>&copy; backpacker</li><li>2015 All Rights Reserved</li>
+						</ul>
+					</footer>
 	
 
     <!-- Bootstrap core JavaScript
