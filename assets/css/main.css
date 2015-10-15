@@ -175,12 +175,15 @@ a:after {
 
 #headerwrap h1 {
 	font-size: 80px;
-	color: white;
+	color: #576897;
+	font-weight: 350;
 }
 
 #headerwrap h3 {
 	font-size: 20px;
 	color: white;
+	font-weight: 200;
+	font-family: "Times New Roman";
 }
 
 /* Intnro Wrap */
