@@ -1,217 +1,300 @@
-<<<<<<< HEAD
-<?php
-session_start();
-?>
-
-=======
->>>>>>> origin/master
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
+
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="assets/ico/favicon.png">
 
-    <title>Backpacker</title>
+    <title>backpacker - find your way to the world</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="assets/css/main.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/business-casual.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
     
-	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
-    
-    <script src="assets/js/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/js/smoothscroll.js"></script> 
-    <script src="assets/js/Chart.js"></script>
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-      <script src="assets/js/html5shiv.js"></script>
-      <script src="assets/js/respond.min.js"></script>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
 
-  <body data-spy="scroll" data-offset="0" data-target="#nav">
+</head>
 
-	<div id="section-topbar">
-		<div id="topbar-inner">
-			<div class="container">
-				<div class="row">
-					<div class="dropdown">
-						<ul id="nav" class="nav">
-							<li class="menu-item"><a class="smoothScroll" href="login.php" title="About"><i class="icon-user"></i></a></li>
-							<li class="menu-item"><a class="smoothScroll" href="#resume" title="Resume"><i class="icon-file"></i></a></li>
-							<li class="menu-item"><a class="smoothScroll" href="#work" title="Works"><i class="icon-briefcase"></i></a></li>
-							<li class="menu-item"><a class="smoothScroll" href="#contact" title="Contact"><i class="icon-envelope"></i></a></li>
-						</ul><!--/ uL#nav -->
-					</div><!-- /.dropdown -->
+<body>
 
-					<div class="clear"></div>
-				</div><!--/.row -->
-			</div><!--/.container -->
+    <!-- Navigation -->
+    <nav class="navbar navbar-default" role="navigation" >
+        <div class="container" height>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <a class="navbar-brand" href="index.php" style = "float:left; margin-right:0px;">BackPacker</a>
+            <div style = "height: 60px;width:50%; margin-left:0px;margin-right:10px;float:left;">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="index.php">Home</a>
+                    </li>
+                    <li>
+                        <a href="search.php">Search</a>
+                    </li>
+                    <li>
+                        <a href="#">about us </a>
+                    </li>
+                    <li>
+                        <div id="log"></div>
+                    </li>
+                </ul>            
+            </div>
+            <div id = "menuright">
+            <?php
+            $servername = "engr-cpanel-mysql.engr.illinois.edu";
+            $username= "backpack_general";
+            $password="123456";
+            $dbname="backpack_user";
 
-			<div class="clear"></div>
-		</div><!--/ #topbar-inner -->
-	</div><!--/ #section-topbar -->
-	
-	<div id="headerwrap">
-		<div class="container">
-			<div class="row centered">
-				<div class="col-lg-12">
-					<h1>Backpacker</h1>
-					<h3>CS 411 Project</h3>
-					<h3><em>Yifei Li, Bangqi Wang <br>Shengze Wang, Zhengbang Chen</em><h3>
-				</div><!--/.col-lg-12 -->
-			</div><!--/.row -->
-		</div><!--/.container -->
-	</div><!--/.#headerwrap -->
-	
-			<?php
-			$servername = "engr-cpanel-mysql.engr.illinois.edu";
-			$username= "backpack_zbc";
-			$password="123456";
-			$dbname="backpack_user";
+            //Create connection
+            $conn = new mysqli($servername, $username, $password, $dbname);
 
-			//Create connection
-			$conn = new mysqli($servername, $username, $password, $dbname);
+            //Check connection
+            // if(mysqli_connect_error()){
+            //  die("Database connection failed: " .mysqli_connect_error());
+            // }
+            // echo "Connected sucessfully<br><br>";
+            ?>
+                <?php           
+                    if(isset($_SESSION['login_user'])){  //detect if there is an login user
+                    $show='                                       
+                              <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Hello '.$_SESSION['login_user']. '
+                                <span class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                  <li><a href="new_post.php">New Post</a></li>
+                                  <li><a href="my_post.php">My Post</a></li>
+                                  <li><a href="logout.php">Log out</a></li>
+                                </ul>
+                              </div>';
+                    }
+                    else{
+                    $show='<a href="login.php" class="loginbut">login</a> 
+                           <a href="signup.php" class="signbut">sign up</a>';
 
-			//Check connection
-			// if(mysqli_connect_error()){
-			// 	die("Database connection failed: " .mysqli_connect_error());
-			// }
-			// echo "Connected sucessfully<br><br>";
-			?>
+                    }
+                    echo $show;     
+                ?>       
+                             
+            </div>
+            <!-- <div id = "menuright">
+                <input placeholder="search" type="text" spellcheck="false" value="" id="search"
+                            style ="line-height: 21px; height: 28px;
+                                        float:left; border-radius:3px; border:1px solid #AEAEAE; padding-left:8px;"> 
+                <a href="login.html" id="loginbut">login</a>  
+                <a href="signup.html" id="signbut">signup</a>                  
+            </div> -->
+            <!-- /.navbar-collapse -->
 
-	<section id="about" name="about"></section>
-	<div id="intro">
-		<div class="container">
-			<div class="row">
-				
-				<div class="col-lg-2 col-lg-offset-1">
-					<h5><?php
-								// echo "What the fuck doesn't this work?"
-							$sql = "SELECT * FROM post WHERE writer_username = 'Zhengbang'";
-							$result = mysqli_query($conn, $sql);
-							$row = mysqli_fetch_assoc($result);
-							echo $row["writer_username"];
-					?></h5>
-				</div>
-				<div class="col-lg-6">
-					<p><?php
-								// echo "What the fuck doesn't this work?"
-							// $sql = "SELECT * FROM post";
-							// $result = mysqli_query($conn, $sql);
-							// $row = mysqli_fetch_assoc($result);
-							echo $row["content"];
-					?></p>
-					<br>
-				
+        </div>
+        <!-- /.container -->
+    </nav>
 
-				</div>
-				<div class="col-lg-3">
-					<p><?php
-								// echo "What the fuck doesn't this work?"
-							// $sql = "SELECT * FROM post";
-							// $result = mysqli_query($conn, $sql);
-							// $row = mysqli_fetch_assoc($result);
-							echo $row["location"];
-					?></p>
-				</div>
-				
-			</div><!--/.row -->
-		</div><!--/.container -->
-	</div><!--/ #intro -->
+    <div class="brand" style="padding-top:100px;">BackPacker</div>
+    <div class="address-bar">World   |   Live   |   Vision</div>
 
-	<section id="about" name="about"></section>
-	<div id="intro">
-		<div class="container">
-			<div class="row">
-				
-				<div class="col-lg-2 col-lg-offset-1">
-					<h5><?php
-								// echo "What the fuck doesn't this work?"
-							$sql = "SELECT * FROM post WHERE writer_username='Bangqi'";
-							$result = mysqli_query($conn, $sql);
-							$row = mysqli_fetch_assoc($result);
-							echo $row["writer_username"];
-					?></h5>
-				</div>
-				<div class="col-lg-6">
-					<p><?php
-								// echo "What the fuck doesn't this work?"
-							echo $row["content"];
-					?></p>
-					<br>
-				
+    <div class="container">
 
-				</div>
-				<div class="col-lg-3">
-					<p><?php
-								// echo "What the fuck doesn't this work?"
-							echo $row["location"];
-					?></p>
-				</div>
-				
-			</div><!--/.row -->
-		</div><!--/.container -->
-	</div><!--/ #intro -->
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12 text-center">
+                    <div id="carousel-example-generic" class="carousel slide" style="height:600px;overflow:hidden;">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators hidden-xs">
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                        </ol>
 
-	<!-- <section id="resume" name="resume"></section>
-	<div class="container desc">
-		<div class="row">
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <img class="img-responsive img-full" src="http://static1.squarespace.com/static/52bdd7dfe4b02ffea75a35d6/t/555d396ce4b038f06242198b/1432172934164/Copenhagen?format=2500w" alt="">
+                            </div>
+                            <div class="item">
+                                <img class="img-responsive img-full" src="http://static1.squarespace.com/static/52bdd7dfe4b02ffea75a35d6/t/537e930ce4b0cabbb8fa0d27/1400804113550/Mission?format=1500w
+                                " alt="">
+                            </div>
+                            <div class="item">
+                                <img class="img-responsive img-full" src="http://static1.squarespace.com/static/52bdd7dfe4b02ffea75a35d6/t/55afc9abe4b0f74033fc7978/1437583791194/Geneva?format=2500w" alt="">
+                            </div>
+                        </div>
 
-				<div class="col-lg-2 col-lg-offset-1">
-					<h5>EDUCATION</h5>
-				</div>
-				<div class="col-lg-6">
-					<p><t>Master of Web Design</t><br/>
-						St. Patrick University <br/>
-						<i>3 Years Course</i>
-					</p>
-				</div>
-				<div class="col-lg-3">
-					<p><sm>GRADUATING IN MAY 2014</sm><br/>
-					<imp><sm>IN PROGRESS</sm></imp>
-					</p>
-				</div>
-	
-				<div class="col-lg-6 col-lg-offset-3">
-					<p><t>Degree of Web Developer</t><br/>
-						Hastings University <br/>
-						<i>2 Years Course</i>
-					</p>
-				</div>
-				<div class="col-lg-3">
-					<p><sm>JUNE 2012</sm></p>
-				</div>
-	
-		</div>
-		<br>
-		<hr>
-	</div> -->
-	
-	<!-- Footer -->
-					<footer id="footer">
-						<ul class="copyright">
-							<li>&copy; backpacker</li><li>2015 All Rights Reserved</li>
-						</ul>
-					</footer>
-	
+                        <!-- Controls -->
+                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                            <span class="icon-prev"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                            <span class="icon-next"></span>
+                        </a>
+                    </div>
+                    <h2 class="brand-before">
+                        <small>Welcome to</small>
+                    </h2>
+                    <h1 class="brand-name">BackPacker</h1>
+                    <!-- <hr class="tagline-divider"> -->
+                    <h2>
+                        <small> The place to find your companion on the journey
+                            <!-- <strong>Team SegV</strong> -->
+                        </small>
+                    </h2>
+                </div>
+            </div>
+        </div>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="assets/js/bootstrap.js"></script>
-  </body>
-<<<<<<< HEAD
+
+        <div class = "row" id="most_recent_post">
+                <div class = "col-lg-12"> 
+                    <h1 class = "text-center">MOST RECENT POSTS </h1>
+                </div>
+        </div>
+        
+        
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12">
+                    <hr>
+                    <h2 class = "text-center">
+                           <strong><em> <?php
+                            $sql = "SELECT * FROM post WHERE post_id=(SELECT MAX(post_id) FROM post)";
+                            $result = mysqli_query($conn, $sql);
+                            $row = mysqli_fetch_assoc($result);
+                            echo $row["title"];
+                            ?></em></strong>
+                    </h2>
+                    <h2 class = "intro-text text-center"><em><?php
+                            echo $row["writer_username"];
+                        ?>
+                        </em>
+                     </h2>
+                    <h2 class = "intro-text text-center">
+                        <?php
+                            echo $row["location"];
+                        ?>
+        
+                        <?php
+                            echo $row["date"];
+                        ?>
+                     </h2>
+                    <hr>
+                    <!-- <img class="img-responsive img-border img-left" src="img/intro-pic.jpg" alt=""> -->
+                    <hr class="visible-xs">
+                    <p class = "recent_post_container">
+                        <?php
+                         echo $row["content"];
+                        ?>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12">
+                    <hr>
+                    <h2 class = "text-center">
+                           <strong><em> <?php
+                            $sql = "SELECT * FROM post WHERE post_id=(SELECT MAX(post_id) FROM post WHERE post_id < (SELECT MAX(post_id) FROM post))";
+                            $result = mysqli_query($conn, $sql);
+                            $row = mysqli_fetch_assoc($result);
+                            echo $row["title"];
+                            ?></em></strong>
+                    </h2>
+                    <h2 class = "intro-text text-center"><em><?php
+                            echo $row["writer_username"];
+                        ?>
+                        </em>
+                     </h2>
+                    <h2 class = "intro-text text-center">
+                        <?php
+                            echo $row["location"];
+                        ?>
+        
+                        <?php
+                            echo $row["date"];
+                        ?>
+                     </h2>
+                    <hr>
+                    <!-- <img class="img-responsive img-border img-left" src="img/intro-pic.jpg" alt=""> -->
+                    <hr class="visible-xs">
+                    <p class = "recent_post_container">
+                        <?php
+                         echo $row["content"];
+                        ?>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p>backpacker &copy; 2015 All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+
+// function log(txt) {
+//   $("#log").html("location : <b>" + txt + "</b> px")
+// }
+
+// $(function() {
+//   var eTop = $('.navbar').offset().top; //get the offset top of the element
+//   log(eTop - $(window).scrollTop()); //position of the ele w.r.t window
+
+//   $(window).scroll(function() { //when window is scrolled
+//     log(eTop - $(window).scrollTop());
+//   });
+// });
+
+    </script>
+
+    <script src="js/backpacker.js"></script>
+
+</body>
+
 </html>
-=======
-</html>
->>>>>>> origin/master

@@ -32,12 +32,12 @@ $result = mysqli_query($connection, $sql);
 $row = mysqli_fetch_assoc($result);
 //$rows = mysql_num_rows($row["username"]);
 if ($row>0) {
-$_SESSION['login_user']=$username; // Initializing Session
-header("location: index.php"); // Redirecting To Other Page
+$_SESSION['login_user']=$uname; // Initializing Session
+header("location: my_post.php"); // Redirecting To Other Page
 } 
 else {
 $error = "Username or Password is invalid";
-session_destroy();
+//session_destroy();
 //header('location:login.php');
 }
 //mysql_close($connection); // Closing Connection
