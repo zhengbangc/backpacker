@@ -190,8 +190,8 @@
               <?php
                       if(isset($_POST['submit']))
                         {
-                        $servername = "engr-cpanel-mysql.engr.illinois.edu";
-                        $username= "backpack_zbc";
+                        $servername = "localhost";
+                        $username= "root";
                         $password="123456";
                         $dbname="backpack_user";
 

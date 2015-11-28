@@ -18,8 +18,8 @@ $uname=$_POST['username'];
 $pword=$_POST['password'];
 // Establishing Connection with Server by passing server_name, user_id and password as a parameter
 
-$servername = "engr-cpanel-mysql.engr.illinois.edu";
-$username= "backpack_zbc";
+$servername = "localhost";
+$username= "root";
 $password="123456";
 $dbname="backpack_user";
 

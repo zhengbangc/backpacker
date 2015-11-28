@@ -3,8 +3,8 @@
     $error="";
     $su_post_id=$_POST['post_id'] ;
     $su_username=$_SESSION['login_user'];
-    $servername = "engr-cpanel-mysql.engr.illinois.edu";
-    $username= "backpack_zbc";
+    $servername = "localhost";
+    $username= "root";
     $password="123456";
     $dbname="backpack_user";
 

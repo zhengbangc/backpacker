@@ -1,6 +1,6 @@
 <?php session_start();
-    $servername = "engr-cpanel-mysql.engr.illinois.edu";
-    $username= "backpack_zbc";
+    $servername = "localhost";
+    $username= "root";
     $password="123456";
     $dbname="backpack_user";
     $su_username=$_SESSION['login_user'];

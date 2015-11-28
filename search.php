@@ -117,8 +117,8 @@
 		if(isset($_POST['submit'])){
 			$search_type = $_POST['search_type'];
 			$search_res = $_POST['content'];
-			$servername = "engr-cpanel-mysql.engr.illinois.edu";
-			$username= "backpack_zbc";
+			$servername = "localhost";
+			$username= "root";
 			$password="123456";
 			$dbname="backpack_user";
 			// Create connection

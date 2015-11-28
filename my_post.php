@@ -67,8 +67,8 @@
             </div>
             <div id = "menuright">
             <?php
-            $servername = "engr-cpanel-mysql.engr.illinois.edu";
-            $username= "backpack_general";
+            $servername = "localhost";
+            $username= "root";
             $password="123456";
             $dbname="backpack_user";
 
